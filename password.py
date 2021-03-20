@@ -1,34 +1,36 @@
-#!/usr/bin/env python3 
+import argparse
+import random
+import pyperclip
+# create lists
+list_symbols = ["!", "@", "#", "$", "%", "^", "&", "*"]
 
-#Program Notes
-#TODO Fill out the program notes
-"""
-Aurthor : [Your name here]
-Email   : [Your email address here]
-Purpose : [What does this program do?]
-Date    : [Date of completion]
-"""
+list_num = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-#TODO create a list of upper case characters
+lowercase_list = ["a", "b", "c", "v", "q", "u", "x", "p", "q", "y"]
 
+uppercase_list = ["A", "B", "S", "C", "T", "W", "R", "M", "N", "J"]
 
-#TODO create a list of lowercase characters
+# create a join to join the 4 lists together
+password_character_bank = list_symbols + list_num + lowercase_list + uppercase_list
 
+# Create list WITHOUT symbols
+password_character_bank_no_symbols = list_num + lowercase_list + uppercase_list
 
-#TODO create a list of number
+password = []
+password_length = int(input("How many characters would you like your password? "))
+use_symbols = (input("Would you like to use symbols? "))
 
+# Use IF statement to determine a password with or without special characters
+if use_symbols == "yes":
+    # loop over password character bank and choose a character at random
+    for x in range(password_length):
+        password.append(random.choice(password_character_bank))
 
-#TODO create a list of symbols
+    # else choose a password without special characters
+else:
+    for x in range(password_length):
+        password.append(random.choice(password_character_bank_no_symbols))
 
-
-#TODO ask user for desired password length
-
-
-#TODO ask user if they want to include symbols in their password
-
-
-#TODO generate password according to user specs and give it to user
-
-### BONUS ###
-##TODO automatically copy password to the users clipboard
-
+# print random password to user
+print(password)
+pyperclip.copy(password)
